@@ -83,7 +83,7 @@ class OrderController:
             self.generar_orden_producto(orden_canje_list)
 
         elif(canjea == 'e'):
-            self.agregar_producto(self.productList)
+            self.agregar_producto(self.productList,userid)
         
 
     def generar_orden_producto(self,lista_productos):
