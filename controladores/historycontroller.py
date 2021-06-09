@@ -17,7 +17,7 @@ class Historycontroller:
         print("----------------Results--------------------")
         print("Numero orden - ID Producto - Descripcion - Cantidad")
         for i in range (0,len(results)):
-            print(results[i].n_orden,"\t\t",results[i].id_producto,"\t\t", results[i].descripcion,"\t\t", results[i].cantidad)
+            print(results[i].n_orden,"\t\t",results[i].id_producto,"\t\t", results[i].descripcion,"\t", results[i].cantidad)
         print("----------------Results--------------------")
 
     def detalle_usuario(self, userid):
