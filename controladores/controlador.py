@@ -3,13 +3,14 @@ from config import session
 from sqlalchemy import select
 from model.credencial import Credencial
 from model.user import User
+import getpass
 
 class Controlador:
 
     user_id = 0
     def __init__(self):
         user = input("Ingrese nombre de usuario: ")
-        password = input("Ingrese contraseña: ")
+        password = getpass.getpass("Ingrese contraseña: ")
         
         
         if(self.login(user, password)):
