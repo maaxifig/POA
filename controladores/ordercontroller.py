@@ -98,31 +98,10 @@ class OrderController:
             if(i!=0):
                 
                 if (lista_productos[i].id_producto != lista_productos[i - 1].id_producto):
-                 
-                    lista_cantidad = list(filter(lambda p: p.id_producto == lista_productos[i].id_producto, lista_productos))
-                    cant = len(lista_cantidad)
-                    print('Producto: ', lista_cantidad[0].descripcion, " Cantidad: ", cant)
-                    
-                    orden_producto = Orden_producto()
-                    orden_producto.n_orden = max_orden
-                    orden_producto.id_producto = lista_cantidad[0].id_producto
-                    orden_producto.cantidad = cant
-                    save(orden_producto)
-
+                    self.calcular_cantidad_productos(lista_productos, max_orden,i)
 
             else:
-       
-                lista_cantidad = list(filter(lambda p: p.id_producto == lista_productos[i].id_producto, lista_productos))
-                cant = len(lista_cantidad)
-                print('Producto: ', lista_cantidad[0].descripcion, " Cantidad: ", cant)
-                
-                orden_producto = Orden_producto()
-                orden_producto.n_orden = max_orden
-                orden_producto.id_producto = lista_cantidad[0].id_producto
-                orden_producto.cantidad = cant
-
-                save(orden_producto)
-
+                self.calcular_cantidad_productos(lista_productos, max_orden,i)
 
     def actualizar_puntos(self, puntos, userid):
         stmt = (
@@ -141,7 +120,7 @@ class OrderController:
                     lista[i] = lista[i+1]
                     lista[i+1] = aux
 
-    def calcular_cantidad_productos(lista_productos, cant):
+    def calcular_cantidad_productos(self, lista_productos, max_orden, i):
         lista_cantidad = list(filter(lambda p: p.id_producto == lista_productos[i].id_producto, lista_productos))
         cant = len(lista_cantidad)
         print('Producto: ', lista_cantidad[0].descripcion, " Cantidad: ", cant)
